@@ -2,6 +2,7 @@ package com.example.mercado.vendas.controller;
 
 import com.example.mercado.vendas.controller.request.ClienteRequest;
 import com.example.mercado.vendas.controller.response.ClienteResponse;
+import com.example.mercado.vendas.controller.validation.EmailValidation;
 import com.example.mercado.vendas.service.ClienteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ public class ClienteController {
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public void criarCliente(@RequestBody ClienteRequest clienteRequest) {
+
         clienteService.criarNovoCliente(clienteRequest.toModel());
     }
 

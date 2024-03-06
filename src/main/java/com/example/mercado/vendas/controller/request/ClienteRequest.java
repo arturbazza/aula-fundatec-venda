@@ -1,6 +1,7 @@
 package com.example.mercado.vendas.controller.request;
 
 import com.example.mercado.vendas.model.Cliente;
+import jakarta.validation.constraints.Email;
 import lombok.Data;
 
 /**
@@ -20,6 +21,9 @@ public class ClienteRequest {
     private String identidade;;
     private String cpf;
     private EnderecoRequest endereco;
+
+    @Email
+    private String email;
 
     public Cliente toModel() {
         var cliente = new Cliente();
