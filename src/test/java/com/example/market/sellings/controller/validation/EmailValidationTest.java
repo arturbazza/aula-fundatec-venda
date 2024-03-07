@@ -1,10 +1,6 @@
 package com.example.market.sellings.controller.validation;
 
-import org.assertj.core.api.Assertions;
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
-//import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -19,9 +15,7 @@ class EmailValidationTest {
     void validEmail(String email) {
         EmailValidation emailValidation = new EmailValidation();
         boolean result = emailValidation.validate(email);
-//        Assertions.assertTrue(result);
-//        MatcherAssert.assertThat("email should be valid", result, Matchers.is(true));
-        Assertions.assertThat(result).isTrue();
+        assertThat(result).isTrue();
     }
 
     @ParameterizedTest
@@ -29,9 +23,7 @@ class EmailValidationTest {
     void invalidEmail(String email) {
         EmailValidation emailValidation = new EmailValidation();
         boolean result = emailValidation.validate(email);
-//        Assertions.assertFalse(result);
-//        MatcherAssert.assertThat("email should be invalid", result, Matchers.is(false));
-        Assertions.assertThat(result).isFalse();
+        assertThat(result).isFalse();
     }
 
     @ParameterizedTest
@@ -39,8 +31,7 @@ class EmailValidationTest {
     void invalidEmailWithMethodSource(String email, boolean isValid) {
         EmailValidation emailValidation = new EmailValidation();
         boolean result = emailValidation.validate(email);
-//        Assertions.assertEquals(result, isValid);
-        Assertions.assertThat(result).isEqualTo(isValid);
+        assertThat(result).isEqualTo(isValid);
     }
 
     public static Stream<Arguments> emailsFactory() {
