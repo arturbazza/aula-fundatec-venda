@@ -2,37 +2,38 @@ package com.example.market.sellings;
 
 import org.junit.jupiter.api.Test;
 
-import org.junit.jupiter.api.Assertions;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CalculatorTest {
 
     @Test
-    void somar() {
+    void sum() {
         // Given
         double a = 1;
         double b = 3;
         // When
-        var resultado = Calculator.somar(a, b);
+        var resultado = Calculator.sum(a, b);
 
         // Then
-        Assertions.assertEquals(4, resultado);
+        assertThat(resultado).isEqualTo(4);
     }
 
     @Test
-    void dividir() {
+    void divide() {
         // Given
         double a = 4;
         double b = 2;
 
         // When
-        var resultado = Calculator.dividir(a, b);
+        var resultado = Calculator.divide(a, b);
 
         // Then
-        Assertions.assertEquals(2, resultado);
+        assertThat(resultado).isEqualTo(2);
     }
 
     @Test
-    void dividirComZero() {
+    void divideByZero() {
         // Given
         double a = 4;
         double b = 0;
@@ -41,10 +42,11 @@ class CalculatorTest {
 
 
         // Then
-        Assertions.assertThrows(ArithmeticException.class,
+        assertThatThrownBy(
                 () -> {
-                    Calculator.dividir(a, b);
+                    Calculator.divide(a, b);
                 }
-        );
+        ).isInstanceOf(ArithmeticException.class)
+                .hasMessage("Não pode-se dividir por zero");
     }
 }
